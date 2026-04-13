@@ -25,33 +25,48 @@ export default function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const telefonoCompleto = `${form.codigoPais}${form.whatsapp}`;
+    const telefonoLimpio = form.whatsapp.replace(/\D/g, "");
+
+    if (telefonoLimpio.length < 10) {
+      alert("Número inválido ❌");
+      return;
+    }
+
+    const telefonoCompleto = `${form.codigoPais}${telefonoLimpio}`;
 
     const data = {
-      nombre: form.nombre,
+      nombre: form.nombre.trim(),
       telefono: telefonoCompleto,
-      correo: form.correo,
+      correo: form.correo.trim(),
       estado: form.estado,
       grado: form.grado,
       pertenece: form.pertenece,
       edad: form.edad,
+      modalidad: form.modalidad,
+      programa: form.programa,
+      pregunta: form.pregunta,
     };
 
     try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbw4O34ja3EOFq8QyQApYCcXGYVYC90D7UzyQTVZumfx-e3pQV4McpXoL3imfcnICMFJhw/exec",
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("TU_URL_SCRIPT", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
 
       const result = await response.json();
-      console.log("Respuesta:", result);
 
-      alert("Registro enviado correctamente 🚀");
+      if (result.full) {
+        alert("Cupo presencial lleno 🚫 selecciona en línea");
+        return;
+      }
 
-      // limpiar formulario
+      if (result.duplicate) {
+        alert("Este número ya está registrado ⚠️");
+        return;
+      }
+
+      alert("Registro exitoso 🚀");
+
       setForm({
         nombre: "",
         codigoPais: "+52",
@@ -61,11 +76,13 @@ export default function App() {
         grado: "",
         pertenece: "",
         edad: "",
+        modalidad: "",
+        programa: "",
+        pregunta: "",
       });
 
     } catch (error) {
-      console.error("Error:", error);
-      alert("Error al enviar ❌");
+      alert("Error ❌");
     }
   };
 
@@ -115,17 +132,21 @@ export default function App() {
 
         <form onSubmit={handleSubmit} className="form">
 
-          {/* NOMBRE */}
+        {/* NOMBRE */}
+        <div className="form-group">
+          <label>Nombre completo</label>
           <input
             type="text"
             name="nombre"
-            placeholder="Nombre completo"
             value={form.nombre}
             onChange={handleChange}
             required
           />
+        </div>
 
-          {/* TELÉFONO */}
+        {/* TELÉFONO */}
+        <div className="form-group">
+          <label>Número de contacto</label>
           <div className="phone-group">
             <select
               name="codigoPais"
@@ -142,24 +163,86 @@ export default function App() {
             <input
               type="tel"
               name="whatsapp"
-              placeholder="Número de contacto"
               value={form.whatsapp}
-              onChange={handleChange}
+              onChange={(e) => {
+                const value = e.target.value.replace(/\D/g, "");
+                setForm({
+                  ...form,
+                  whatsapp: value
+                });
+              }}
               required
             />
           </div>
+        </div>
 
-          {/* CORREO */}
+        {/* CORREO */}
+        <div className="form-group">
+          <label>Correo electrónico</label>
           <input
             type="email"
             name="correo"
-            placeholder="Correo electrónico"
             value={form.correo}
             onChange={handleChange}
             required
           />
+        </div>
+        {/* EDAD */}
+        <div className="form-group">
+          <label>Edad</label>
+          <select
+            name="edad"
+            value={form.edad}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Selecciona tu edad</option>
+            <option value="<18">Menor de 18</option>
+            <option value="18-24">18 - 24</option>
+            <option value="25-34">25 - 34</option>
+            <option value="35-44">35 - 44</option>
+            <option value="45+">Mayor de 45</option>
+          </select>
+        </div>
 
-          {/* ESTADO */}
+        {/* MODALIDAD */}
+        <div className="form-group">
+          <label>¿Cómo deseas participar?</label>
+          <select
+            name="modalidad"
+            value={form.modalidad}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Selecciona una opción</option>
+            <option value="Presencial">
+              Presencial — Campus Mérida Santa Lucía
+            </option>
+            <option value="En línea">
+              En línea — Transmisión en vivo
+            </option>
+          </select>
+        </div>
+
+        {/* PROGRAMA */}
+        <div className="form-group">
+          <label>¿Qué programa te interesa?</label>
+          <select
+            name="programa"
+            value={form.programa}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Selecciona una opción</option>
+            <option>Maestría</option>
+            <option>Doctorado</option>
+            <option>Aún no lo sé</option>
+          </select>
+        </div>
+
+        {/* ESTADO */}
+        <div className="form-group">
+          <label>Estado</label>
           <select
             name="estado"
             value={form.estado}
@@ -200,61 +283,67 @@ export default function App() {
             <option>Yucatán</option>
             <option>Zacatecas</option>
           </select>
+        </div>
 
-          {/* GRADO */}
+        {/* GRADO */}
+        <div className="form-group">
+          <label>Grado de estudios</label>
           <select
             name="grado"
             value={form.grado}
             onChange={handleChange}
             required
           >
-            <option value="">Selecciona el grado</option>
+            <option value="">Selecciona una opción</option>
             <option value="Licenciatura">Licenciatura</option>
             <option value="Maestría">Maestría</option>
             <option value="Doctorado">Doctorado</option>
           </select>
+        </div>
 
-          {/* TIPO */}
+        {/* TIPO */}
+        <div className="form-group">
+          <label>¿Perteneces a la Universidad del Sur?</label>
           <select
             name="pertenece"
             value={form.pertenece}
             onChange={handleChange}
             required
           >
-            <option value="">¿Eres parte de la Universidad del Sur?</option>
+            <option value="">Selecciona una opción</option>
             <option value="Egresado">Egresado</option>
+            <option value="Alumno">Alumno</option>
             <option value="Externo">Externo</option>
           </select>
+        </div>
 
-          {/* EDAD */}
-          <select
-            name="edad"
-            value={form.edad}
+        {/* PREGUNTA */}
+        <div className="form-group">
+          <label>¿Tienes una pregunta para el Dr. Tobón?</label>
+          <textarea
+            name="pregunta"
+            maxLength="150"
+            value={form.pregunta}
             onChange={handleChange}
-            required
-          >
-            <option value="">Selecciona tu edad</option>
-            <option value="<18">Menor de 18</option>
-            <option value="18-24">18 - 24</option>
-            <option value="25-34">25 - 34</option>
-            <option value="35-44">35 - 44</option>
-            <option value="45+">Mayor de 45</option>
-          </select>
+          />
+          <small>(Opcional · máximo 150 caracteres)</small>
+        </div>
 
-          <button type="submit" className="cta">
-            Quiero registrarme
-          </button>
+        <button type="submit" className="cta">
+          Quiero registrarme
+        </button>
 
-        </form>
+      </form>
       </section>
 
-      {/* CTA FINAL */}
+      {/* CTA FINAL 
       <section className="block center">
         <h3>Cupos limitados 🚨</h3>
         <button className="cta" onClick={scrollToForm}>
           Apartar mi lugar ahora
         </button>
       </section>
+          */}
 
     </div>
   );

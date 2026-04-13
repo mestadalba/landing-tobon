@@ -5,23 +5,23 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: #7c366c;
 }
 
-/* ⚠️ ROOT LIMPIO (NO FLEX) */
+/* ROOT */
 #root {
   width: 100%;
 }
 
-/* ✅ CONTENEDOR CENTRADO CORRECTO */
+/* CONTENEDOR */
 .container {
   max-width: 800px;
-  margin: 40px auto; /* 👈 CENTRADO REAL */
+  margin: 40px auto;
   padding: 20px;
   width: 100%;
-  background: #fff;
-  border-radius: 10px;;
+  background: #ffffff;
+  border-radius: 12px;
 }
 
 /* HERO */
@@ -41,12 +41,14 @@ body {
 /* TEXTOS */
 h1, h2 {
   color: #7c366c;
-  font-size: 24px;
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
 h3 {
   font-size: 16px;
   font-weight: normal;
+  color: #444;
 }
 
 /* BLOQUES */
@@ -58,7 +60,7 @@ h3 {
   text-align: center;
 }
 
-/* 🎥 VIDEO RESPONSIVE */
+/* VIDEO */
 .video-wrapper {
   position: relative;
   width: 100%;
@@ -86,38 +88,46 @@ h3 {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
-input,
-select {
+/* GRUPO */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* LABEL */
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 400;
+  text-align: left;
+  color: #333;
+}
+
+/* INPUTS */
+.form-group input,
+.form-group select,
+.form-group textarea {
   padding: 12px;
-  font-size: 16px;
-  color:#fff;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-}
-input::-webkit-input-placeholder{
-  color: #fff;
-}
-
-
-/* BOTÓN */
-.cta {
-  padding: 14px;
-  font-size: 16px;
-  background: #000;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 6px;
-  margin-top: 10px;
+  font-size: 14px;
+  background: #fff;
+  color: #000; /* 🔥 importante */
 }
 
-.cta:hover {
-  opacity: 0.9;
+/* FOCUS */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #7c366c;
+  box-shadow: 0 0 0 2px rgba(124, 54, 108, 0.2);
 }
 
+/* TELÉFONO */
 .phone-group {
   display: flex;
   gap: 10px;
@@ -131,7 +141,36 @@ input::-webkit-input-placeholder{
   width: 70%;
 }
 
-/* DESKTOP */
+/* TEXTAREA */
+textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+/* SMALL */
+small {
+  font-size: 12px;
+  color: #777;
+}
+
+/* BOTÓN */
+.cta {
+  padding: 14px;
+  font-size: 16px;
+  background: #7c366c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  background: #5a274f;
+}
+
+/* RESPONSIVE */
 @media (min-width: 768px) {
   .logo {
     max-width: 200px;
