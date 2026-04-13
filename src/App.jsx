@@ -106,13 +106,14 @@ export default function App() {
 
       {/* VIDEO */}
       <section className="block center">
-        <div className="video-wrapper">
+          <img src="/evento.png" className="responsive-img" alt="Evento" />
+       {/* <div className="video-wrapper">
           <iframe
             src="https://www.youtube.com/embed/wXKUFUa5KjE"
             title="Video"
             allowFullScreen
           ></iframe>
-        </div>
+        </div>*/}
       </section>
 
       {/* DESCRIPCIÓN */}
