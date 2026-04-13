@@ -80,12 +80,10 @@ h3 {
 .responsive-img {
   width: 100%;
   height: auto;
-  max-width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
   display: block;
-  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
-
 /* 🔥 Mejora visual en desktop */
 @media (min-width: 768px) {
   .responsive-img {

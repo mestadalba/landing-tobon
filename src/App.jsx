@@ -106,7 +106,12 @@ export default function App() {
 
       {/* VIDEO */}
       <section className="block center">
-          <img src="/evento.png" className="responsive-img" alt="Evento" />
+         <img 
+            src="/evento.png" 
+            className="responsive-img" 
+            alt="Evento"
+            loading="lazy"
+          />
        {/* <div className="video-wrapper">
           <iframe
             src="https://www.youtube.com/embed/wXKUFUa5KjE"
