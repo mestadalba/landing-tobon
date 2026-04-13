@@ -98,11 +98,7 @@ export default function App() {
         <h2>La inteligencia artificial está revolucionando el mundo.
           Universidad del Sur tiene el honor de recibir al
           <br></br><b>Dr. Sergio Tobón</b></h2>
-        <h3>
-          Presencial · Campus Mérida Santa Lucía · Cupo limitado
-          En vivo · Plataformas digitales oficiales con previó registro<br></br>
-          9 Doctorados Honoris Causa · SNII Nivel II · 18 países
-        </h3>
+        
         {/* DESCRIPCIÓN */}
         <section className="block">
           <p>
