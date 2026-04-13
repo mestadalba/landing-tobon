@@ -43,7 +43,6 @@ export default function App() {
       pertenece: form.pertenece,
       edad: form.edad,
       modalidad: form.modalidad,
-      programa: form.programa,
       pregunta: form.pregunta,
     };
 
@@ -77,7 +76,6 @@ export default function App() {
         pertenece: "",
         edad: "",
         modalidad: "",
-        programa: "",
         pregunta: "",
       });
 
@@ -221,22 +219,6 @@ export default function App() {
             <option value="En línea">
               En línea — Transmisión en vivo
             </option>
-          </select>
-        </div>
-
-        {/* PROGRAMA */}
-        <div className="form-group">
-          <label>¿Qué programa te interesa?</label>
-          <select
-            name="programa"
-            value={form.programa}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Selecciona una opción</option>
-            <option>Maestría</option>
-            <option>Doctorado</option>
-            <option>Aún no lo sé</option>
           </select>
         </div>
 
