@@ -93,7 +93,7 @@ export default function App() {
 
       {/* HERO */}
       <section className="hero">
-        <img className="logo" src="/logo.png" alt="Logo" />
+        <a href="https://universidaddelsur.edu.mx/"><img className="logo" src="/logo.png" alt="Logo" /></a>
         <h1>Evento Exclusivo en Mérida</h1>
         <h3>
           Descubre nuevas oportunidades académicas y profesionales
