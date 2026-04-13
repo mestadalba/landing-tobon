@@ -99,15 +99,6 @@ export default function App() {
           Universidad del Sur tiene el honor de recibir al
           <br></br><b>Dr. Sergio Tobón</b></h2>
         
-        {/* DESCRIPCIÓN */}
-        <section className="block">
-          <p>
-            Este evento es una muestra de lo que vives en Universidad del Sur. Una universidad diseñada para profesionistas que están en constante superación — con 14 Licenciaturas, 15 Maestrías y 5 Doctorados, presencia en Mérida, Cancún, Tuxtla y modalidad en línea, respaldada por 28 años de calidad académica y certificación ALPES.
-En Universidad del Sur creemos que la formación no termina en el aula. Por eso continuamente traemos a los referentes más importantes de Latinoamérica para que nuestra comunidad esté siempre a la vanguardia.
-          </p>
-          <h2>Conferencia Magistral | Inteligencia Artificial en la Educación</h2>
-        </section>
-
         <button className="cta" onClick={scrollToForm}>
           Reservar mi lugar
         </button>
@@ -130,6 +121,15 @@ En Universidad del Sur creemos que la formación no termina en el aula. Por eso 
         </div>*/}
       </section>
 
+      {/* DESCRIPCIÓN */}
+      <section className="block">
+        <p>
+          Este evento es una muestra de lo que vives en Universidad del Sur. Una universidad diseñada para profesionistas que están en constante superación — con 14 Licenciaturas, 15 Maestrías y 5 Doctorados, presencia en Mérida, Cancún, Tuxtla y modalidad en línea, respaldada por 28 años de calidad académica y certificación ALPES.
+En Universidad del Sur creemos que la formación no termina en el aula. Por eso continuamente traemos a los referentes más importantes de Latinoamérica para que nuestra comunidad esté siempre a la vanguardia.
+        </p>
+        <h2>Conferencia Magistral | Inteligencia Artificial en la Educación</h2>
+      </section>
+      
       {/* FORMULARIO */}
       <section className="block form-section" ref={formRef}>
         <h2>Regístrate ahora</h2>
