@@ -48,7 +48,7 @@ export default function App() {
     };
 
     try {
-      const response = await fetch("TU_URL_SCRIPT", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbw4O34ja3EOFq8QyQApYCcXGYVYC90D7UzyQTVZumfx-e3pQV4McpXoL3imfcnICMFJhw/exec", {
         method: "POST",
         body: JSON.stringify(data),
       });
