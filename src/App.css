@@ -90,7 +90,10 @@ h3 {
   font-weight: normal;
   color: #444;
 }
-
+p{
+  text-align: justify;
+  margin-bottom: 20px;
+}
 /* BLOQUES */
 .block {
   margin-bottom: 40px;
@@ -226,6 +229,7 @@ small {
 @media (min-width: 768px) {
   .logo {
     max-width: 200px;
+    margin-bottom: 20px;
   }
 
   h1 {
