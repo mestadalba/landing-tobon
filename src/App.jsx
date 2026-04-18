@@ -27,8 +27,8 @@ export default function App() {
 
     const telefonoLimpio = form.whatsapp.replace(/\D/g, "");
 
-    if (telefonoLimpio.length < 10) {
-      alert("Número inválido ❌");
+    if (telefonoLimpio.length !== 10) {
+      alert("El número debe tener exactamente 10 dígitos ❌");
       return;
     }
 
@@ -61,6 +61,10 @@ export default function App() {
 
       if (result.duplicate) {
         alert("Este número ya está registrado ⚠️");
+        return;
+      }
+      if (result.invalid) {
+        alert("Número inválido ❌");
         return;
       }
 
@@ -168,6 +172,7 @@ En Universidad del Sur creemos que la formación no termina en el aula. Por eso 
                 type="tel"
                 name="whatsapp"
                 value={form.whatsapp}
+                maxLength={10} // 🔥 IMPORTANTE
                 onChange={(e) => {
                   const value = e.target.value.replace(/\D/g, "");
                   setForm({
